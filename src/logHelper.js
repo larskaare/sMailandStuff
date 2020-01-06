@@ -15,28 +15,28 @@ exports.createLogger = function(){
 
     case 'development':
         return bunyan.createLogger({
-            name: 'AADemo',
+            name: 'sMailandStuff',
             stream: process.stdout,
             level: config.appConfig.logLevel.development       
         });
 
     case 'debug':
         return bunyan.createLogger({
-            name: 'AADemo',
+            name: 'sMailandStuff',
             stream: process.stdout,
             level: config.appConfig.logLevel.debug       
         });
 
     case 'production':
         return bunyan.createLogger({
-            name: 'AADemo',
+            name: 'sMailandStuff',
             stream: process.stdout,
             level: config.appConfig.logLevel.production       
         });
 
     default:
         return bunyan.createLogger({
-            name: 'AADemo',
+            name: 'sMailandStuff',
             stream: process.stdout,
             level: config.appConfig.logLevel.development       
         });
