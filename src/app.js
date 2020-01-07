@@ -15,56 +15,15 @@ var randomstring = require('randomstring');
 var logHelper = require('./logHelper');
 var config = require('../config/config.js');
 var authUtil = require('../src/authutils');
-var apputils = require('../src/apputils')
 
 var log = logHelper.createLogger();
 
 
 log.info('Logger started, NODE_ENV=' + process.env.NODE_ENV);
 
-// Getting and normalising port for server
-var port = apputils.normalizePort(process.env.PORT || '3000');
+var localConfig = authUtil.getLocalConfig();
+log.info('Local config prepared using: ' + localConfig.CLIENTID + ' as clientID');
 
-// Determing the url of the server. Using Radix env. varibles
-var hostDomainName = (process.env.RADIX_PUBLIC_DOMAIN_NAME || 'localhost');
-var hostUrl = '';
-var hostUrlWithPort = '';
-
-if (hostDomainName !== 'localhost') {
-    hostUrl = 'https://' + hostDomainName;
-} else {
-    hostUrl = 'http://' + hostDomainName;
-}
-
-hostUrlWithPort = hostUrl + ':' + port;
-
-log.info('Setting host url to ' + hostUrl);
-
-// Reading vital config from environment variables
-//
-const localConfig={};
-
-localConfig.IDENTITYMETADATA = 'https://login.microsoftonline.com/' + (process.env.TENANTID) + '/v2.0/.well-known/openid-configuration'
-localConfig.CLIENTID = (process.env.CLIENTID || config.creds.clientID);
-localConfig.CLIENTSECRET = (process.env.CLIENTSECRET || config.creds.clientSecret);
-
-//If we are running in the cloud we do not, usually, specify port as it's 80
-if (hostDomainName !== 'localhost') {
-    localConfig.REDIRECTURL = hostUrl + (process.env.REDIRECTURL || config.creds.redirectUrl);
-    localConfig.DESTROYSESSIONURL = (process.env.DESTROYSESSIONURL || config.destroySessionUrl) + hostUrl;
-
-} else {
-    localConfig.REDIRECTURL = hostUrlWithPort + (process.env.REDIRECTURL || config.creds.redirectUrl);
-    localConfig.DESTROYSESSIONURL =  (process.env.DESTROYSESSIONURL || config.destroySessionUrl) + hostUrlWithPort;
-}
-
-log.info('Redirect URL ' + localConfig.REDIRECTURL);
-log.info('Destroy session URL ' + localConfig.DESTROYSESSIONURL);
-log.info('Identity metadata URL ' + localConfig.IDENTITYMETADATA);
-
-// set up database for express session
-// var MongoStore = require('connect-mongo')(expressSession);
-// var mongoose = require('mongoose');
 
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
