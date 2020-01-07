@@ -1,0 +1,24 @@
+apiVersion: radix.equinor.com/v1
+kind: RadixApplication
+metadata:
+  name: smailandstuff
+spec:
+  environments:
+    - name: production
+      build:
+        from: master
+  components:
+    - name: webapp
+      src: .
+      ports:
+       - name: http
+         port: 3000
+      public: true
+      replicas: 1
+      environmentConfig:
+        - environment: production
+          variables:
+            TENANTID: "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
+            CLIENTID: "bc5ee045-a194-4c04-acf9-1718f58bf5c6"
+      secrets:
+        - CLIENTSECRET

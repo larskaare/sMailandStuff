@@ -10,7 +10,7 @@ exports.appConfig = {
 
 exports.creds = {
     // Required
-    identityMetadata: 'https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/v2.0/.well-known/openid-configuration', 
+    identityMetadata: 'https://login.microsoftonline.com/3' + process.env.TENANTID + '/v2.0/.well-known/openid-configuration', 
     // or equivalently: 'https://login.microsoftonline.com/<tenant_guid>/v2.0/.well-known/openid-configuration'
     //
     // or you can use the common endpoint
@@ -18,7 +18,7 @@ exports.creds = {
     // To use the common endpoint, you have to either turn `validateIssuer` off, or provide the `issuer` value.
   
     // Required, the client ID of your app in AAD  
-    clientID: 'bc5ee045-a194-4c04-acf9-1718f58bf5c6',
+    clientID: process.env.CLIENTID,
   
     // Required, must be 'code', 'code id_token', 'id_token code' or 'id_token'
     // If you want to get access_token, you must use 'code', 'code id_token' or 'id_token code' 
@@ -28,14 +28,14 @@ exports.creds = {
     responseMode: 'form_post', 
   
     // Required, the reply URL registered in AAD for your app
-    redirectUrl: 'http://localhost:3000/auth/openid/return', 
+    redirectUrl: '/auth/openid/return', 
   
     // Required if we use http for redirectUrl
     allowHttpForRedirectUrl: true,
   
     // Required if `responseType` is 'code', 'id_token code' or 'code id_token'. 
     // If app key contains '\', replace it with '\\'.
-    clientSecret: process.env.CLIENT_SECRET, 
+    clientSecret: process.env.CLIENTSECRET, 
   
     // Required to set to false if you don't want to validate issuer
     validateIssuer: false,
