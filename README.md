@@ -47,3 +47,5 @@ Radix lives at https://www.radix.equinor.com
 * (Apply for access to the Radix playground)
 * Create new application in the Radix Playground
 * Inject the CLIENTSECRET using the Radix Web Console
+
+(Current version of code uses memory to as session store. This will not scale beyond one app instance and it will leak memory. This set-up is not recommended for ***real*** production scenarios)
