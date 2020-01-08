@@ -4,10 +4,12 @@ block content
   h1= title
 
   if !user
-    h2 Greetings!
+    h2 Greetings! <span style="font-size: 50%">
+    p (Last seen #{lastSeen})</span>
     a(href='/login') Log In
   else
-    p Greetings! #{user.displayName}
+    p Greetings #{user.displayName}!
+    p (Last seen #{lastSeen} )
     p
     a(href='/userinfo') User information
     p

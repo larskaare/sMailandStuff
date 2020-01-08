@@ -4,6 +4,7 @@ block content
   h1= title
 
   h2 User information
+  p (Last seen on secure connection #{lastSeen} )
   p
   p #{user.displayName} is authenticated
   p Access token expire date and time: #{user._json.exp} (#{tokenExpDate})

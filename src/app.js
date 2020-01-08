@@ -139,7 +139,7 @@ var app = express();
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(methodOverride());
-app.use(cookieParser());
+app.use(cookieParser('NotSoSecretAfterAll'));
 
 // Define logging for middleware
 app.use(require('express-bunyan-logger')(logHelper.expressLoggerConfig()));
@@ -192,9 +192,11 @@ app.use('/', indexRouter);
 app.use('/mail', mailRouter);
 app.use('/userinfo', userInfoRouter);
 
-app.get('/', function(req, res) {
-    res.render('index', { user: req.user });
-});
+// app.get('/', function(req, res) {
+//     log.info('Cookies ' + req.cookies);
+//     console.log(req.cookires);
+//     res.render('index', { user: req.user });
+// });
 
 app.get('/login',
     function(req, res, next) {
