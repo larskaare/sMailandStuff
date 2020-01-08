@@ -22,7 +22,7 @@ router.get('/', authUtil.ensureAuthenticated, function(req, res) {
         httpOnly: true,
         signed: true,
         secure: true,
-        sameSite: "lax",
+        sameSite: "strict",
         path: "/userinfo"
     };
 

@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
         httpOnly: true,
         signed: false,
         secure: false,
-        sameSite: "lax"
+        sameSite: "strict"
 
     };
 
