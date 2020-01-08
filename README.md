@@ -6,6 +6,7 @@ A web application to test various web features ....
 - oAuth2 and OICD against Azure AD
 - Reading email from o365 Graph
 - Expose various token related information for user/session
+- Exploring cookie beaviour for displaying last time visited on a few pages
 
 ## Install and run locally
 

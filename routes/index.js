@@ -1,3 +1,8 @@
+/*jslint node: true */
+/*jshint esversion: 6 */
+
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 var logHelper = require('../src/logHelper');
