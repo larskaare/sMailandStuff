@@ -10,7 +10,7 @@ exports.appConfig = {
 
 exports.creds = {
     // Required
-    identityMetadata: 'https://login.microsoftonline.com/3' + process.env.TENANTID + '/v2.0/.well-known/openid-configuration', 
+    identityMetadata: 'https://login.microsoftonline.com/' + process.env.TENANTID + '/v2.0/.well-known/openid-configuration', 
     // or equivalently: 'https://login.microsoftonline.com/<tenant_guid>/v2.0/.well-known/openid-configuration'
     //
     // or you can use the common endpoint
