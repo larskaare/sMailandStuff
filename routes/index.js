@@ -35,7 +35,7 @@ router.get('/', function(req, res) {
     var nowD = moment().utc().format('LLLL');
     res.cookie('sMailandStuff_lasttimeseen',nowD, cookieOptions);
 
-    res.render('index', { title: 'sMailandStuff - Demo Web App', user: req.user, lastSeen: lastSeen });
+    res.render('index', { title: 'sMailandStuff', user: req.user, lastSeen: lastSeen });
 });
 
 module.exports = router;

@@ -1,15 +1,18 @@
 extends layout
 
+
 block content
+  
   h1= title
+  img.image(src="/images/Information_icon.png" style="position: absolute;top: 20px;right:20px;width:20%;display:inline-block")
 
   if !user
-    h2 Greetings! <span style="font-size: 50%">
-    p (Last seen #{lastSeen})</span>
+    h3 Greetings, and welcome to the wonderful world of sMailandStuff
     a(href='/login') Log In
   else
     p Greetings #{user.displayName}!
-    p (Last seen #{lastSeen} )
+    if lastSeen
+     p (Last seen #{lastSeen} )
     p
     a(href='/userinfo') User information
     p
