@@ -1,7 +1,7 @@
 #
 # -- Base node image with app
 #
-FROM node:10-alpine AS base
+FROM node:lts-alpine AS base
 WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN mkdir -p ./config ./public ./routes ./src ./views
