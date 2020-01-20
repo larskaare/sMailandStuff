@@ -23,13 +23,13 @@ RUN npm install
 #
 # Running test, linting and npm audit
 #
-#FROM dependencies as test
-#WORKDIR /usr/src/app
+FROM dependencies as test
+WORKDIR /usr/src/app
 #COPY test test
 #RUN ["npm","test"]
 #COPY .eslintrc.json .eslintignore ./
 #RUN npm run lint
-#RUN npm audit
+RUN npm audit
 
 #
 # Release image
@@ -37,6 +37,5 @@ RUN npm install
 FROM base as release
 WORKDIR /usr/src/app
 COPY --from=dependencies /usr/src/app/node_modules_production ./node_modules
-ENV NODE_ENV=development
 EXPOSE 3000
-ENTRYPOINT [ "node", "./src/www.js"]
+ENTRYPOINT [ "npm", "start"]
