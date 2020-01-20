@@ -263,7 +263,7 @@ app.get('/logout', function(req, res){
 });
 
 //Error logging for middleware
-app.use(require('express-bunyan-logger').errorLogger(logHelper.expressLoggerConfig()));
+// app.use(require('express-bunyan-logger').errorLogger(logHelper.expressLoggerConfig()));
 
 
 // catch 404 and forward to error handler

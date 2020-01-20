@@ -39,4 +39,4 @@ WORKDIR /usr/src/app
 COPY --from=dependencies /usr/src/app/node_modules_production ./node_modules
 ENV NODE_ENV=development
 EXPOSE 3000
-ENTRYPOINT [ "npm", "start"]
+ENTRYPOINT [ "node", "./src/www.js"]
