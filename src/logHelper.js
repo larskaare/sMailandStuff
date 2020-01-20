@@ -46,10 +46,12 @@ exports.createLogger = function(){
 
 //Environmental aware config for the middleware
 exports.expressLoggerConfig = function() {
-    
+    var log = module.exports.createLogger();
+
     switch (process.env.NODE_ENV) {
 
     case 'development':
+        log.info('Expresslogger - development');
         return {name: 'DEVELOPMENT',
             streams: [{
                 level: config.appConfig.logLevel.development,
@@ -59,6 +61,7 @@ exports.expressLoggerConfig = function() {
         };
 
     case 'production':
+        log.info('Expresslogger - production');
         return {name: 'PRODUCTION',
             streams: [{
                 level: config.appConfig.logLevel.production,
@@ -68,6 +71,7 @@ exports.expressLoggerConfig = function() {
         };
 
     case 'debug':
+        log.info('Expresslogger - debug');
         return {name: 'DEBUG',
             streams: [{
                 level: config.appConfig.logLevel.debug,
@@ -77,6 +81,7 @@ exports.expressLoggerConfig = function() {
         };
 
     default :
+    log.info('Expresslogger - default');
         return {name: process.env.NODE_ENV,
             streams: [{
                 level: 'warn',
