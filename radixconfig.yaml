@@ -23,4 +23,4 @@ spec:
             NODE_ENV: "production"
       secrets:
         - CLIENTSECRET
-        _ NODE_ENV
+        - NODE_ENV
