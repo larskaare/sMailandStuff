@@ -172,11 +172,6 @@ app.use(function(req, res, next) {
     return authUtil.considerRefresh(req, res, next);
 });
 
-app.use(function(req, res, next) {
-    log.info('Logger' + req.url);
-    next();
-});
-
 app.use(express.static(__dirname + '/../public'));
 
 
