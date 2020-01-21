@@ -1,5 +1,5 @@
 # sMailandStuff
-A web application to test various web features ....
+A web application to test various features in web applications, integration to DevOps tools and cloud deployments.
 
 ## Features
 
