@@ -1,4 +1,5 @@
 # sMailandStuff
+
 A web application to test various features in web applications, integration to DevOps tools and cloud deployments.
 
 ## Features
@@ -10,12 +11,13 @@ A web application to test various features in web applications, integration to D
 
 ## Install and run locally
 
-* Clone repository
-* Do `npm install`
-* Create `Application registration` in Azure AD
-* Update configuration in `./config/config.js`
-* Export the following config into the local environment variables 
-```
+- Clone repository
+- Do `npm install`
+- Create `Application registration` in Azure AD
+- Update configuration in `./config/config.js`
+- Export the following config into the local environment variables
+
+```bash
 export NODE_ENV=development
 export CLIENTSECRET=""
 export PORT=3000
@@ -23,14 +25,14 @@ export TENANTID=""
 export CLIENTID=""
 ```
 
-* Run application using `npm start`
+- Run application using `npm start`
 
 ## Docker
 
-* Build: `docker build -t smailandstuff .`
-* Run:
+- Build: `docker build -t smailandstuff .`
+- Run:
 
-```
+```bash
 docker run -p 3000:3000  \
     --env TENANTID="" \
     --env CLIENTID="" \
@@ -42,12 +44,12 @@ docker run -p 3000:3000  \
 
 ### Radix
 
-Radix lives at https://www.radix.equinor.com
+Radix lives at <https://www.radix.equinor.com>
 
-* Examine and update `./radixconfig.yaml`
-* (Apply for access to the Radix playground)
-* Create new application in the Radix Playground
-* Inject the CLIENTSECRET using the Radix Web Console
+- Examine and update `./radixconfig.yaml`
+- (Apply for access to the Radix playground)
+- Create new application in the Radix Playground
+- Inject the CLIENTSECRET using the Radix Web Console
 
 (Current version of code uses memory to as session store. This will not scale beyond one app instance and it will leak memory. This set-up is not recommended for ***real*** production scenarios)
 
