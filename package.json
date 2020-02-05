@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node ./src/www.js  | ./node_modules/.bin/bunyan ",
     "nodemon": "./node_modules/.bin/nodemon ./src/www.js | ./node_modules/.bin/bunyan",
-    "lint": "node ./node_modules/.bin/eslint . --ext .js"
+    "lint": "node ./node_modules/.bin/eslint . --ext .js",
+    "test": "./node_modules/.bin/mocha"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
