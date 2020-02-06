@@ -9,6 +9,7 @@ var expressSession = require('express-session');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
+var helmet = require('helmet');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var randomstring = require('randomstring');
@@ -140,6 +141,26 @@ app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(methodOverride());
 app.use(cookieParser('NotSoSecretAfterAll'));
+
+//Defining security headers
+app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ['\'self\''],
+        styleSrc: ['\'self\'']
+    }   
+}));
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+app.use(helmet.featurePolicy({
+    features: {
+        fullscreen: ['\'self\''],
+        autoplay: ['\'none\''],
+        payment: ['\'none\''],
+        syncXhr: ['\'none\''],
+        geolocation: ['\'self\''],
+        camera: ['\'none\'']
+    }
+}));
 
 // Define logging for middleware
 app.use(require('express-bunyan-logger')(logHelper.expressLoggerConfig()));

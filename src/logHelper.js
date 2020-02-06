@@ -34,6 +34,15 @@ exports.createLogger = function(){
             level: config.appConfig.logLevel.production       
         });
 
+     case 'test':
+        return bunyan.createLogger({
+            name: 'sMailandStuff-test',
+            streams: [{
+                path: './test/log/test.log',
+            }],
+            level: config.appConfig.logLevel.development       
+        });
+
     default:
         return bunyan.createLogger({
             name: 'sMailandStuff',
@@ -76,6 +85,16 @@ exports.expressLoggerConfig = function() {
             streams: [{
                 level: config.appConfig.logLevel.debug,
                 stream: process.stdout
+            }],
+            // excludes: ['req-headers', 'user-agent','res-headers','response-hrtime','req','res']
+        };
+
+    case 'test':
+        log.info('Expresslogger - test');
+        return {name: 'TEST',
+            streams: [{
+                level: config.appConfig.logLevel.development,
+                path: './test/log/test_express.log',
             }],
             // excludes: ['req-headers', 'user-agent','res-headers','response-hrtime','req','res']
         };
