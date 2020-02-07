@@ -8,6 +8,10 @@ A web application to test various features in web applications, integration to D
 - Reading email from o365 Graph
 - Expose various token related information for user/session
 - Exploring cookie beaviour for displaying last time visited on a few pages
+- Docker multi-stage build
+- Support for ESLint
+- Security headers like CSP
+- Automated tests
 
 ## Install and run locally
 
@@ -26,6 +30,20 @@ export CLIENTID=""
 ```
 
 - Run application using `npm start`
+
+### Test
+
+The the application by running `npm test`
+
+### Linting
+
+Lint the code by running `npm run lint`
+
+### Using nodemon
+
+Using nodemon will automatically restart the application when a change is observed in a javascript file.
+
+To develop using nodemon run `npm run nodemon`
 
 ## Docker
 

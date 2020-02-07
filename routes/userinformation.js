@@ -22,8 +22,8 @@ router.get('/', authUtil.ensureAuthenticated, function(req, res) {
         httpOnly: true,
         signed: true,
         secure: true,
-        sameSite: "strict",
-        path: "/userinfo"
+        sameSite: 'strict',
+        path: '/userinfo'
     };
 
     //Extracting and showing last time visited in cookie

@@ -25,10 +25,17 @@ RUN npm install
 #
 FROM dependencies as test
 WORKDIR /usr/src/app
-#COPY test test
-#RUN ["npm","test"]
-#COPY .eslintrc.json .eslintignore ./
-#RUN npm run lint
+#Preparing and runnig tests
+COPY test test
+ENV CLIENTSECRET="a-secret"
+ENV PORT=3000
+ENV TENANTID="a-tenant"
+ENV CLIENTID="a-client-id"
+RUN ["npm","test"]
+#Preparing and running linting
+COPY .eslintrc.json .eslintignore ./
+RUN npm run lint
+#Running vulnerability check for dependencies
 RUN npm audit
 
 #

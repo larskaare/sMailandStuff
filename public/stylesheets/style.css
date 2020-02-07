@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.infoImg {
+  position: absolute;
+  top: 20px;
+  right:20px;
+  width:20%;
+  display:inline-block
+}
