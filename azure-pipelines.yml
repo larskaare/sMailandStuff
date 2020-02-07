@@ -33,6 +33,6 @@ stages:
         containerRegistry: | 
           $(dockerHub)
         repository: $(imageName)
-        command: 'push'
+        command: push
         tags: |
           testing
