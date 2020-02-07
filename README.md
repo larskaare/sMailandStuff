@@ -1,6 +1,6 @@
 # sMailandStuff
 
-[![Azure Pipeline Build Status](https://lksk.visualstudio.com/sMailandStuff/_apis/build/status/larskaare.sMailandStuff?branchName=master)](https://lksk.visualstudio.com/sMailandStuff/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://lksk.visualstudio.com/sMailandStuff/_apis/build/status/larskaare.sMailandStuff?branchName=master)](https://lksk.visualstudio.com/sMailandStuff/_build/latest?definitionId=1&branchName=master)
 
 A web application to test various features in web applications, integration to DevOps tools and cloud deployments.
 
