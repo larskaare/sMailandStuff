@@ -11,7 +11,7 @@ var config = require('../config/config.js');
 var rp = require('request-promise');
 var jwtDecode = require('jwt-decode');
 var logHelper = require('./logHelper');
-var apputils = require('./apputils')
+var apputils = require('./apputils');
 var _ = require('lodash');
 
 var log = logHelper.createLogger();
@@ -44,7 +44,7 @@ exports.getLocalConfig = function() {
     // Reading vital config from environment variables
     //
        
-    localConfig.IDENTITYMETADATA = 'https://login.microsoftonline.com/' + (process.env.TENANTID) + '/v2.0/.well-known/openid-configuration'
+    localConfig.IDENTITYMETADATA = 'https://login.microsoftonline.com/' + (process.env.TENANTID) + '/v2.0/.well-known/openid-configuration';
     localConfig.CLIENTID = (process.env.CLIENTID || config.creds.clientID);
     localConfig.CLIENTSECRET = (process.env.CLIENTSECRET || config.creds.clientSecret);
     
@@ -71,35 +71,35 @@ exports.getLocalConfig = function() {
 //The logics to determine if a refresh of the access token should be done.
 exports.considerRefresh = async function (req, res, next) {
 
-   if (_.has(req, 'user.authInfo.access_token_rep')) {
+    if (_.has(req, 'user.authInfo.access_token_rep')) {
 
-    const currExp = req.user.authInfo.access_token_exp;
-    const currDate = new Date();
-    const currTime = Math.round(currDate.getTime() / 1000);
+        const currExp = req.user.authInfo.access_token_exp;
+        const currDate = new Date();
+        const currTime = Math.round(currDate.getTime() / 1000);
 
-    //Differene in seconds between expire time and now before we refresh token
-    const diffSecondsBeforeRefresh = config.diffSecondsBeforeRefresh;
+        //Differene in seconds between expire time and now before we refresh token
+        const diffSecondsBeforeRefresh = config.diffSecondsBeforeRefresh;
 
-    if ((currExp - currTime) <= diffSecondsBeforeRefresh) {
-        log.info('Attemting to refresh access token (limit: ' + diffSecondsBeforeRefresh +  ', refresh at or after: ' + (currExp - currTime) + ')');
-        const metaData = await getMetaData();
-        const newAccessToken = await getNewAccessToken(metaData,req.user.authInfo.refresh_token);
-        const newExpireDate = returnExpFromAccessToken(newAccessToken);
+        if ((currExp - currTime) <= diffSecondsBeforeRefresh) {
+            log.info('Attemting to refresh access token (limit: ' + diffSecondsBeforeRefresh +  ', refresh at or after: ' + (currExp - currTime) + ')');
+            const metaData = await getMetaData();
+            const newAccessToken = await getNewAccessToken(metaData,req.user.authInfo.refresh_token);
+            const newExpireDate = returnExpFromAccessToken(newAccessToken);
         
-        // eslint-disable-next-line require-atomic-updates
-        req.user.authInfo.access_token = newAccessToken;
-        // eslint-disable-next-line require-atomic-updates
-        req.user.authInfo.access_token_exp = newExpireDate;
+            // eslint-disable-next-line require-atomic-updates
+            req.user.authInfo.access_token = newAccessToken;
+            // eslint-disable-next-line require-atomic-updates
+            req.user.authInfo.access_token_exp = newExpireDate;
 
-    } else {
+        } else {
         // console.log('***** I Will NOT ******** >>',(currExp - currTime));
         // Not refreshing yet
+        }
+
+
+    } else {
+        next();
     }
-
-
-   } else {
-       next();
-   }
 
 
    

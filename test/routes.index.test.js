@@ -1,12 +1,14 @@
 /*jslint node: true */
 /*jshint esversion: 6 */
 /*jshint mocha:true */
+/*jshint chai:true */
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "ignore_" }]*/
 
 'use strict';
 
 var request = require('supertest');
 var expect = require('chai').expect;
-var sinon = require('sinon');
+// var sinon = require('sinon');
 
 // start app server here 
 var app = require('../src/app');

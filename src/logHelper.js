@@ -34,7 +34,7 @@ exports.createLogger = function(){
             level: config.appConfig.logLevel.production       
         });
 
-     case 'test':
+    case 'test':
         return bunyan.createLogger({
             name: 'sMailandStuff-test',
             streams: [{
@@ -100,7 +100,7 @@ exports.expressLoggerConfig = function() {
         };
 
     default :
-    log.info('Expresslogger - default');
+        log.info('Expresslogger - default');
         return {name: process.env.NODE_ENV,
             streams: [{
                 level: 'warn',

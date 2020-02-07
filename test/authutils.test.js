@@ -1,6 +1,7 @@
 /*jslint node: true */
 /*jshint esversion: 6 */
 /*jshint mocha:true */
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "ignore_" }]*/
 
 'use strict';
 var expect = require('chai').expect;
@@ -20,7 +21,9 @@ describe('ensureAuthenticated(res,req,next)', function () {
         };
         var res = {};
     
-        var ensureAuthenticated = authutils.ensureAuthenticated(req,res, function() {return req.isAuthenticated()});
+        var ensureAuthenticated = authutils.ensureAuthenticated(req,res, function() {
+            return req.isAuthenticated();
+        });
 
         expect(ensureAuthenticated).to.be.true;
         
@@ -73,7 +76,7 @@ describe('considerRefresh(res,req,next)', function () {
 
         var spy = sinon.spy(next,'next');
 
-        var considerRefresh = authutils.considerRefresh(req, res, next.next);
+        var ignore_considerRefresh = authutils.considerRefresh(req, res, next.next);
 
         expect(spy.calledOnce).to.be.true;
         
@@ -100,7 +103,7 @@ describe('considerRefresh(res,req,next)', function () {
 
         var spy = sinon.spy(next,'next');
 
-        var considerRefresh = authutils.considerRefresh(req, res, next.next);
+        var ignore_considerRefresh = authutils.considerRefresh(req, res, next.next);
 
         expect(spy.calledOnce).to.be.false;
         
