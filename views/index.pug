@@ -10,8 +10,9 @@ block content
 
   if !user
     h3 Greetings, and welcome to the wonderful world of sMailandStuff
+    small Proudly serving from #{hostname}
+    p
     a(href='/login') Log In
-    p #{hostname}
   else
     p Greetings #{user.displayName}!
     if lastSeen

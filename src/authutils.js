@@ -29,7 +29,7 @@ exports.getLocalConfig = function() {
     var port = apputils.normalizePort(process.env.PORT || '3000');
 
     // Determing the url of the server. Using Radix env. varibles
-    var hostDomainName = (process.env.RADIX_PUBLIC_DOMAIN_NAME || 'localhost');
+    var hostDomainName = (process.env.RADIX_PUBLIC_DOMAIN_NAME || process.env.WEBSITE_HOSTNAME || 'localhost');
     var hostUrl = '';
     var hostUrlWithPort = '';
 

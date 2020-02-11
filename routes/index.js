@@ -7,7 +7,10 @@ var express = require('express');
 var router = express.Router();
 var logHelper = require('../src/logHelper');
 var moment = require('moment');
+var authUtil = require('../src/authutils');
 
+
+var localConfig = authUtil.getLocalConfig();
 
 var log = logHelper.createLogger();
 
@@ -35,7 +38,7 @@ router.get('/', function(req, res) {
     var nowD = moment().utc().format('LLLL');
     res.cookie('sMailandStuff_lasttimeseen',nowD, cookieOptions);
 
-    res.render('index', { title: 'sMailandStuff', user: req.user, lastSeen: lastSeen, hostname: process.env.WEBSITE_HOSTNAME });
+    res.render('index', { title: 'sMailandStuff', user: req.user, lastSeen: lastSeen, hostname: localConfig.hostUrl});
 });
 
 module.exports = router;
