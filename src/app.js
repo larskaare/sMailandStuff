@@ -19,6 +19,7 @@ var authUtil = require('../src/authutils');
 
 var log = logHelper.createLogger();
 
+log.info('Hostname',process.env.WEBSITE_HOSTNAME);
 
 log.info('Logger started, NODE_ENV=' + process.env.NODE_ENV);
 
