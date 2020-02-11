@@ -9,11 +9,13 @@ A web application to test various features in web applications, integration to D
 - oAuth2 and OICD against Azure AD
 - Reading email from o365 Graph
 - Expose various token related information for user/session
-- Exploring cookie beaviour for displaying last time visited on a few pages
+- Exploring cookie behavior for displaying last time visited on a few pages
 - Docker multi-stage build
 - Support for ESLint
 - Security headers like CSP
 - Automated tests
+- Support for Omnia Radix (CI, CD, Hosting, Monitoring)
+- Support for Azure Pipelines, Azure Web App for Containers
 
 ## Install and run locally
 
@@ -66,6 +68,12 @@ docker run -p 3000:3000  \
 
 Radix lives at <https://www.radix.equinor.com>
 
+An example application may or may not be available at <https://webapp-smailandstuff-production.playground.radix.equinor.com/>.
+
+[Test report from SSL Labs](https://www.ssllabs.com/ssltest/analyze.html?d=webapp-smailandstuff-production.playground.radix.equinor.com)
+
+[Test report from securityheaders.com](https://securityheaders.com/?q=https%3A%2F%2Fwebapp-smailandstuff-production.playground.radix.equinor.com&followRedirects=on)
+
 - Examine and update `./radixconfig.yaml`
 - (Apply for access to the Radix playground)
 - Create new application in the Radix Playground
@@ -73,4 +81,28 @@ Radix lives at <https://www.radix.equinor.com>
 
 (Current version of code uses memory to as session store. This will not scale beyond one app instance and it will leak memory. This set-up is not recommended for ***real*** production scenarios)
 
-### Azure DevOps (tbd)
+### Azure Pipelines & Azure Web App for Containers
+
+#### Azure Pipelines (CI)
+
+The Azure Pipeline is defined in `azure-pipelines.yml`. The pipeline will build the Docker image the same way Radix does (using Docker multistage build), tag and then push the image to Docker-Hub `larskaare/smailandstuff`. Create your own account on Docker Hub and substitute for `larskaare/smailandstuff` going forward.
+
+#### Azure Web App for Containers (Hosting)
+
+An example application may or may not be available at <https://azsmailandstuff.azurewebsites.net/>.
+
+[Test report from SSL Labs](https://www.ssllabs.com/ssltest/analyze.html?d=azsmailandstuff.azurewebsites.net)
+
+[Test report from securityheaders.com](https://securityheaders.com/?q=https%3A%2F%2Fazsmailandstuff.azurewebsites.net&followRedirects=on)
+
+To host the application create an Azure Web App For Containers, point it to the `larskaare/smailandstuff` image and the `latest`.
+
+Add the following environment variables to the `Configuration -> Application Settings` section:
+- CLIENTID
+- CLIENTSECRET
+- NODE_ENV
+- TENANT_ID
+
+#### Continous Deployment using Docker Hub 
+
+Enable `Continuous Deployment` from the `Container Setting` section of the WebApp (previous section). Copy the webhook to Docker Hub `larskaare/smailandstuff` WebHooks section to enable Docker Hub to trigger a redeploy when new images are pushed into the registry.
