@@ -6,9 +6,12 @@ block content
   h1= title
   img(class="infoImg" src="/images/information-icon.png")
 
+
+
   if !user
     h3 Greetings, and welcome to the wonderful world of sMailandStuff
     a(href='/login') Log In
+    p #{hostname}
   else
     p Greetings #{user.displayName}!
     if lastSeen
