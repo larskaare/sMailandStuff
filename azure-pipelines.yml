@@ -26,3 +26,6 @@ stages:
         repository: 'larskaare/smailandstuff'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+        tags: |
+          $(Build.BuildId)
+          latest
