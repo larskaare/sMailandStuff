@@ -30,7 +30,8 @@ stages:
         tags: |
           $(Build.BuildId)
           latest
-        arguments: 'SNYK_TOKEN=$[SNYKTOKEN]'
+        arguments: 'SNYK_TOKEN=$(SNYKTOKEN)'
+        addPipelineData: false
     - task: Docker@2
       inputs:
         containerRegistry: 'dockerHub'
