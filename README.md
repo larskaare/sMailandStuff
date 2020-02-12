@@ -1,6 +1,7 @@
 # sMailandStuff
 
 [![Build Status](https://lksk.visualstudio.com/sMailandStuff/_apis/build/status/larskaare.sMailandStuff?branchName=master)](https://lksk.visualstudio.com/sMailandStuff/_build/latest?definitionId=1&branchName=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/larskaare/smailandstuff/badge.svg)](https://snyk.io/test/github/larskaare/smailandstuff)
 
 A web application to test various features in web applications, integration to DevOps tools and cloud deployments.
 
@@ -16,6 +17,7 @@ A web application to test various features in web applications, integration to D
 - Automated tests
 - Support for Omnia Radix (CI, CD, Hosting, Monitoring)
 - Support for Azure Pipelines, Azure Web App for Containers
+- Support for Vulnerability scanning using Snyk
 
 ## Install and run locally
 
