@@ -37,3 +37,6 @@ stages:
         containerRegistry: 'dockerHub'
         repository: 'larskaare/smailandstuff'
         command: 'push'
+        tags: |
+          $(Build.BuildId)
+          latest
