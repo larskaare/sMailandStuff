@@ -10,6 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  SNYK_TOKEN: '$(SNYK_TOKEN)'
 
 stages:
 - stage: Build
@@ -24,8 +25,14 @@ stages:
       inputs:
         containerRegistry: 'dockerHub'
         repository: 'larskaare/smailandstuff'
-        command: 'buildAndPush'
+        command: 'build'
         Dockerfile: '**/Dockerfile'
         tags: |
           $(Build.BuildId)
           latest
+        arguments: 'SNYK_TOKEN=$(SNYK_TOKEN)'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'dockerHub'
+    repository: 'larskaare/smailandstuff'
+    command: 'push'
