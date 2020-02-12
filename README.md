@@ -108,3 +108,44 @@ Add the following environment variables to the `Configuration -> Application Set
 #### Continous Deployment using Docker Hub 
 
 Enable `Continuous Deployment` from the `Container Setting` section of the WebApp (previous section). Copy the webhook to Docker Hub `larskaare/smailandstuff` WebHooks section to enable Docker Hub to trigger a redeploy when new images are pushed into the registry.
+
+### Snyk
+
+https://snyk.io/
+
+The project have defines commands to run a Snyk vulnerability test from the command line. Executing `npm run snyk` will run the test. In order for this to work you will have to do add an environment variable called `SNYK_TOKEN` which holds the your accounts API tokens (There are multiple options for how to authenticate with Snyk)
+
+#### Snyk & Docker
+
+To enable Snyk scanning as part of the Docker Build process, remove the comments from the Snyk section
+
+```Docker
+#Running Snyk
+ARG SNYK_TOKEN
+RUN npm run snyk
+```
+
+#### Snyk & Radix
+
+For the SNYK integration to work with Radix you will have to extend the `radixconfig.yaml` to support a builde time secret, the SNYK_TOKEN.
+
+```yaml
+sspec:
+  build:
+    secrets:
+      - SNYK_TOKEN
+```
+
+The value for the SNYK_TOKEN are entered in the Radix portal (the configuration section of your app.)
+
+#### Snyk & Azure Pipeline
+
+For the SNYK integration to work with Azure Pipelines, running as part of the Docker build, you will have to alter the `azure-pipelines.yml` file to include and arguments parts in the task that builds the Docker image.
+
+```yaml
+arguments: --build-arg SNYK_TOKEN=$(SNYKTOKEN)
+```
+
+The value for the SNYK_TOKEN is defines as a variable in the Azure Pipelines. Name the varible `SNYKTOKEN`
+
+There are quite a few other ways to integrate Snyk with Azure Pipelines.

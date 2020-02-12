@@ -30,7 +30,7 @@ stages:
         tags: |
           $(Build.BuildId)
           latest
-        arguments: --build-arg SNYK_TOKEN=$(SNYKTOKEN)
+#       arguments: --build-arg SNYK_TOKEN=$(SNYKTOKEN)
         addPipelineData: false
     - task: Docker@2
       inputs:
