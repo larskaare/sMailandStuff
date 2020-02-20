@@ -1,0 +1,11 @@
+name: Scan git commits for secrets
+
+on: [push]
+
+jobs:
+  scan:
+    name: Scan with gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scan1
+        uses: eshork/gitleaks-action@master
