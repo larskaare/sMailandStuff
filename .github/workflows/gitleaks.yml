@@ -6,7 +6,11 @@ jobs:
   gitleaks:
     name: Scan with gitleaks
     runs-on: ubuntu-latest
-    steps:
-    - name: Gitleaks scan
-      uses: eshork/gitleaks-action@master
     
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: docker pull zricethezav/gitleaks
+
+      - uses: fmigneault/gitleaks-action@master
