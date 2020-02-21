@@ -1,6 +1,6 @@
 name: Scan git commits for secrets
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   scan:
