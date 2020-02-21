@@ -1,8 +1,11 @@
-workflow "gitleaks commits" {
-  on = "push"
-  resolves = ["gitleaks"]
-}
+name: Scan git commits for secrets
 
-action "gitleaks" {
-  uses = "eshork/gitleaks-action@master"
-}
+on: [push]
+
+jobs:
+  scan:
+    name: Scan with gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - name: gitlaks
+        uses: larskaare/gitleaks-action@master
