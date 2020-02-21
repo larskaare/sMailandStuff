@@ -9,5 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: gitleaks scan
+      - name: gitleaks scanning
         uses: larskaare/gitleaks-action@master
