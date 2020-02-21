@@ -19,6 +19,7 @@ A web application to test various features in web applications, integration to D
 - Support for Omnia Radix (CI, CD, Hosting, Monitoring)
 - Support for Azure Pipelines, Azure Web App for Containers
 - Support for Vulnerability scanning using Snyk
+- Added github action to scan for secrets in push and pull requests (using [gitleaks](https://github.com/zricethezav/gitleaks))
 
 ## Install and run locally
 
