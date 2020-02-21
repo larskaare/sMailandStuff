@@ -7,5 +7,5 @@ jobs:
     name: Scan with gitleaks
     runs-on: ubuntu-latest
     steps:
-      - name: gitlaks
+      - name: gitleaks scan
         uses: larskaare/gitleaks-action@master
