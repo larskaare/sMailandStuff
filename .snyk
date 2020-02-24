@@ -5,5 +5,5 @@ ignore:
   SNYK-JS-USERAGENT-174737:
     - express-bunyan-logger > useragent:
         reason: No available fix
-        expires: '2020-03-13T09:10:45.044Z'
+        expires: '2020-03-14T09:10:45.044Z'
 patch: {}
