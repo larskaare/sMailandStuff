@@ -3,6 +3,7 @@
 [![Build Status](https://lksk.visualstudio.com/sMailandStuff/_apis/build/status/larskaare.sMailandStuff?branchName=master)](https://lksk.visualstudio.com/sMailandStuff/_build/latest?definitionId=1&branchName=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/larskaare/smailandstuff/badge.svg)](https://snyk.io/test/github/larskaare/smailandstuff)
 ![Scan git commits for secrets](https://github.com/larskaare/sMailandStuff/workflows/Scan%20git%20commits%20for%20secrets/badge.svg)
+![Unit tests](https://github.com/larskaare/sMailandStuff/workflows/Unit%20tests/badge.svg)
 
 A web application to test various features in web applications, integration to DevOps tools and cloud deployments.
 
