@@ -22,7 +22,7 @@ jobs:
         npm install
         npm test
       env:
-        ENV CLIENTSECRET: "a-secret"
-        ENV PORT: 3000
-        ENV TENANTID: "a-tenant"
-        ENV CLIENTID: "a-client-id"
+        CLIENTSECRET: "a-secret"
+        PORT: 3000
+        TENANTID: "a-tenant"
+        CLIENTID: "a-client-id"
