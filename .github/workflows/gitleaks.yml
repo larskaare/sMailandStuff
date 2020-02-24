@@ -1,16 +1,13 @@
 name: Scan git commits for secrets
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  gitleaks:
+  scan:
     name: Scan with gitleaks
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: docker pull zricethezav/gitleaks
-
-      - uses: fmigneault/gitleaks-action@master
+      - name: gitleaks scanning
+        uses: larskaare/gitleaks-action@master
