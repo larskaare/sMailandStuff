@@ -7,6 +7,31 @@
 
 A web application to test various features in web applications, integration to DevOps tools and cloud deployments.
 
+<!-- TOC -->
+
+- [sMailandStuff](#smailandstuff)
+    - [Features](#features)
+    - [Install and run locally](#install-and-run-locally)
+        - [Test](#test)
+        - [Linting](#linting)
+        - [Using nodemon](#using-nodemon)
+    - [Docker](#docker)
+    - [Cloud Deployment](#cloud-deployment)
+        - [Radix](#radix)
+        - [Azure Pipelines & Azure Web App for Containers](#azure-pipelines--azure-web-app-for-containers)
+            - [Azure Pipelines (CI)](#azure-pipelines-ci)
+            - [Azure Web App for Containers (Hosting)](#azure-web-app-for-containers-hosting)
+            - [Continous Deployment using Docker Hub](#continous-deployment-using-docker-hub)
+        - [Snyk](#snyk)
+            - [Snyk & Docker](#snyk--docker)
+            - [Snyk & Radix](#snyk--radix)
+            - [Snyk & Azure Pipeline](#snyk--azure-pipeline)
+    - [Consderations using Windows](#consderations-using-windows)
+        - [Shell](#shell)
+        - [Known isues](#known-isues)
+
+<!-- /TOC -->
+
 ## Features
 
 - oAuth2 and OICD against Azure AD
@@ -154,3 +179,34 @@ arguments: --build-arg SNYK_TOKEN=$(SNYKTOKEN)
 The value for the SNYK_TOKEN is defines as a variable in the Azure Pipelines. Name the varible `SNYKTOKEN`
 
 There are quite a few other ways to integrate Snyk with Azure Pipelines.
+
+## Consderations using Windows
+
+### Shell
+
+Most things should work ok with the cmd or powershell - with a few limitations. I've tested with using git-bash which is part of [Git for Windows](https://gitforwindows.org/).
+
+### Known isues
+
+* Be aware of how to export environment variables, `set` for Windows, `export` for Bash/Linux
+* Define proxy variables if needed:
+```
+  HTTP_PROXY=http://url:port
+  HTTPS_PROXY=http://url:port
+```
+* `npm` is a bit quicky when it comes to running scripts. Doing `npm start` may fail, but copying the command from `package.json`and running from the terminal works for most scenarios. Configuring NPM to use a different shell could be an option `npm config set shell-script` could be an option to explore.
+* Using [Docker Desktop for Windows](https://www.docker.com/get-started) should work fine. Remeber to define proxy settings if your beind one of these. Update the `~/.docker/config.json` with something like this (update `url`and `port` to reflect your context):
+
+```
+   {"proxies":
+    {
+      "default":
+      {
+        "httpProxy": "http://url:port",
+        "httpsProxy": "http://url:port",
+        "noProxy": ""
+      }
+    }
+   }
+```
+
