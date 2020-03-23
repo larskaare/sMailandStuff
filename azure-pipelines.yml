@@ -10,7 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  SNYK_TOKEN: '$(SNYK_TOKEN)'
+  SNYK_TOKEN: '$(SNYKTOKEN)'
 
 stages:
 - stage: Build
