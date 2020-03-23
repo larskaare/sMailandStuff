@@ -41,6 +41,16 @@ stages:
           latest
 #       arguments: --build-arg SNYK_TOKEN=$(SNYKTOKEN)
         addPipelineData: false
+    - task: SnykSecurityScan@0
+      inputs:
+        serviceConnectionEndpoint: 'Snyk EQ AppSec'
+        testType: 'container'
+        dockerImageName: 'larskaare/smailandstuff'
+        dockerfilePath: 'Dockerfile'
+        monitorOnBuild: true
+        failOnIssues: true
+        projectName: '[AzPipeline][ContainerScan]'
+        organization: 'appsec-5y8'
     - task: Docker@2
       inputs:
         containerRegistry: 'dockerHub'
