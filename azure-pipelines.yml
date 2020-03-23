@@ -21,15 +21,15 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - task: SnykSecurityScan@0
-      inputs:
-        serviceConnectionEndpoint: 'Snyk EQ AppSec'
-        testType: 'app'
-        severityThreshold: 'high'
-        monitorOnBuild: true
-        failOnIssues: true
-        projectName: '[AzPipeline][AppScan]'
-        organization: 'appsec-5y8'
+    # - task: SnykSecurityScan@0
+    #   inputs:
+    #     serviceConnectionEndpoint: 'Snyk EQ AppSec'
+    #     testType: 'app'
+    #     severityThreshold: 'high'
+    #     monitorOnBuild: true
+    #     failOnIssues: true
+    #     projectName: '[AzPipeline][AppScan]'
+    #     organization: 'appsec-5y8'
     - task: Docker@2
       inputs:
         containerRegistry: 'dockerHub'
