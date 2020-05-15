@@ -10,25 +10,25 @@ A web application to test various features in web applications, integration to D
 <!-- TOC -->
 
 - [sMailandStuff](#smailandstuff)
-    - [Features](#features)
-    - [Install and run locally](#install-and-run-locally)
-        - [Test](#test)
-        - [Linting](#linting)
-        - [Using nodemon](#using-nodemon)
-    - [Docker](#docker)
-    - [Cloud Deployment](#cloud-deployment)
-        - [Radix](#radix)
-        - [Azure Pipelines & Azure Web App for Containers](#azure-pipelines--azure-web-app-for-containers)
-            - [Azure Pipelines (CI)](#azure-pipelines-ci)
-            - [Azure Web App for Containers (Hosting)](#azure-web-app-for-containers-hosting)
-            - [Continous Deployment using Docker Hub](#continous-deployment-using-docker-hub)
-        - [Snyk](#snyk)
-            - [Snyk & Docker](#snyk--docker)
-            - [Snyk & Radix](#snyk--radix)
-            - [Snyk & Azure Pipeline](#snyk--azure-pipeline)
-    - [Consderations using Windows](#consderations-using-windows)
-        - [Shell](#shell)
-        - [Known isues](#known-isues)
+  - [Features](#features)
+  - [Install and run locally](#install-and-run-locally)
+    - [Test](#test)
+    - [Linting](#linting)
+    - [Using nodemon](#using-nodemon)
+  - [Docker](#docker)
+  - [Cloud Deployment](#cloud-deployment)
+    - [Radix](#radix)
+    - [Azure Pipelines & Azure Web App for Containers](#azure-pipelines--azure-web-app-for-containers)
+      - [Azure Pipelines (CI)](#azure-pipelines-ci)
+      - [Azure Web App for Containers (Hosting)](#azure-web-app-for-containers-hosting)
+      - [Continous Deployment using Docker Hub](#continous-deployment-using-docker-hub)
+    - [Snyk](#snyk)
+      - [Snyk & Docker](#snyk--docker)
+      - [Snyk & Radix](#snyk--radix)
+      - [Snyk & Azure Pipeline](#snyk--azure-pipeline)
+  - [Consderations using Windows](#consderations-using-windows)
+    - [Shell](#shell)
+    - [Known isues](#known-isues)
 
 <!-- /TOC -->
 
@@ -121,13 +121,7 @@ The Azure Pipeline is defined in `azure-pipelines.yml`. The pipeline will build 
 
 #### Azure Web App for Containers (Hosting)
 
-An example application may or may not be available at <https://azsmailandstuff.azurewebsites.net/>.
-
-[Test report from SSL Labs](https://www.ssllabs.com/ssltest/analyze.html?d=azsmailandstuff.azurewebsites.net)
-
-[Test report from securityheaders.com](https://securityheaders.com/?q=https%3A%2F%2Fazsmailandstuff.azurewebsites.net&followRedirects=on)
-
-To host the application create an Azure Web App For Containers, point it to the `larskaare/smailandstuff` image and the `latest`.
+To host the application create an Azure Web App For Containers, point it to the `larskaare/smailandstuff` image at DockerHub and the `latest` (or adapt and push your own image to another DockerHub repo)
 
 Add the following environment variables to the `Configuration -> Application Settings` section:
 - CLIENTID
