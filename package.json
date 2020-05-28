@@ -1,6 +1,6 @@
 {
   "name": "smailandstuff",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": true,
   "author": "Lars Kaare Skjorestad",
   "license": "MIT",
@@ -11,9 +11,7 @@
     "test": "NODE_ENV=test CLIENTID=aClient CLIENTSECRET=aSecret TENANTID=aTenant PORT=3000 ./node_modules/.bin/mocha",
     "snyk": "./node_modules/.bin/snyk test",
     "snykdev": "./node_modules/.bin/snyk test --dev || true",
-    "snykdocker": "./node_modules/.bin/snyk test --docker node:lts-alpine --file=Dockerfile",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "snykdocker": "./node_modules/.bin/snyk test --docker node:lts-alpine --file=Dockerfile"
   },
   "dependencies": {
     "acorn": "^7.1.1",
@@ -53,6 +51,5 @@
     "nodemon": "^1.19.2",
     "sinon": "^8.1.1",
     "supertest": "^4.0.2"
-  },
-  "snyk": true
+  }
 }

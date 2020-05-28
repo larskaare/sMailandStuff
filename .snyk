@@ -4,20 +4,20 @@ version: v1.14.1
 ignore:
   SNYK-JS-USERAGENT-174737:
     - express-bunyan-logger > useragent:
-        reason: Waiting for fix
-        expires: '2020-04-18T14:04:16.225Z'
+        reason: No fix available
+        expires: '2020-06-27T12:10:22.953Z'
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-LODASH-567746:
-    - lodash:
-        patched: '2020-05-15T07:38:02.396Z'
     - passport-azure-ad > lodash:
-        patched: '2020-05-15T07:38:02.396Z'
+        patched: '2020-05-28T12:09:58.091Z'
     - request-promise > request-promise-core > lodash:
-        patched: '2020-05-15T07:38:02.396Z'
+        patched: '2020-05-28T12:09:58.091Z'
     - pug > pug-code-gen > constantinople > babel-types > lodash:
-        patched: '2020-05-15T07:38:02.396Z'
+        patched: '2020-05-28T12:09:58.091Z'
     - pug > pug-filters > constantinople > babel-types > lodash:
-        patched: '2020-05-15T07:38:02.396Z'
+        patched: '2020-05-28T12:09:58.091Z'
     - pug > pug-code-gen > pug-attrs > constantinople > babel-types > lodash:
-        patched: '2020-05-15T07:38:02.396Z'
+        patched: '2020-05-28T12:09:58.091Z'
+    - lodash:
+        patched: '2020-05-28T12:09:58.091Z'

@@ -18,6 +18,7 @@ FROM base as dependencies
 WORKDIR /usr/src/app
 RUN npm install --only=production
 RUN cp -R node_modules node_modules_production
+RUN apk add --no-cache make gcc g++ python
 RUN npm install
 
 #

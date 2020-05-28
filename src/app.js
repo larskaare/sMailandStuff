@@ -91,6 +91,7 @@ var strategy = new OIDCStrategy({
     nonceLifetime: config.creds.nonceLifetime,
     nonceMaxAmount: config.creds.nonceMaxAmount,
     useCookieInsteadOfSession: config.creds.useCookieInsteadOfSession,
+    cookieSameSite: config.creds.cookieSameSite,
     cookieEncryptionKeys: config.creds.cookieEncryptionKeys,
     clockSkew: config.creds.clockSkew
 },
