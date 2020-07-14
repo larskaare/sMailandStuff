@@ -37,7 +37,7 @@ RUN ["npm","test"]
 COPY .eslintrc.json .eslintignore ./
 RUN npm run lint
 #Running vulnerability check for dependencies
-RUN npm audit --production
+RUN npm audit --production --audit-level=high
 #Running Snyk
 #ARG SNYK_TOKEN
 #RUN npm run snyk
