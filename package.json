@@ -28,7 +28,7 @@
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.19",
     "method-override": "^3.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.27.0",
     "morgan": "~1.10.0",
     "passport": "^0.4.1",
     "passport-azure-ad": "^4.2.1",
