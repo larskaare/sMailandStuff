@@ -17,6 +17,32 @@ var logHelper = require('./logHelper');
 var config = require('../config/config.js');
 var authUtil = require('../src/authutils');
 
+//Defining rate limiting
+// Strategy
+// - Max 500 requests from a specific IP over 15 minutes over all end-points
+// - Max 10 requests to the /userinfo end-point for a specific IP over 15 minutes
+// - Max 3 requests to the /login end-point for a specific IP over 1 hour 
+
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 500 // limit each IP to 100 requests per windowMs
+});
+  
+const userInfoLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 10
+});
+
+
+const loginLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hour
+    max: 3,
+    message: 'Too many logins from this IP, please try again in an hour'
+});
+
+
 var log = logHelper.createLogger();
 
 log.info('Logger started, NODE_ENV=' + process.env.NODE_ENV);
@@ -210,10 +236,12 @@ app.use(express.static(__dirname + '/../public'));
 // it will call `passport.authenticate` to ask for user to log in.
 //-----------------------------------------------------------------------------
 
+//Applying rate limiter to all requests
+app.use(limiter);
 
 app.use('/', indexRouter);
 app.use('/mail', mailRouter);
-app.use('/userinfo', userInfoRouter);
+app.use('/userinfo', userInfoLimiter, userInfoRouter);
 
 // app.get('/', function(req, res) {
 //     log.info('Cookies ' + req.cookies);
@@ -221,7 +249,7 @@ app.use('/userinfo', userInfoRouter);
 //     res.render('index', { user: req.user });
 // });
 
-app.get('/login',
+app.get('/login',loginLimiter,
     function(req, res, next) {
         passport.authenticate('azuread-openidconnect', 
             { 

@@ -10,25 +10,25 @@ A web application to test various features in web applications, integration to D
 <!-- TOC -->
 
 - [sMailandStuff](#smailandstuff)
-    - [Features](#features)
-    - [Install and run locally](#install-and-run-locally)
-        - [Test](#test)
-        - [Linting](#linting)
-        - [Using nodemon](#using-nodemon)
-    - [Docker](#docker)
-    - [Cloud Deployment](#cloud-deployment)
-        - [Radix](#radix)
-        - [Azure Pipelines & Azure Web App for Containers](#azure-pipelines--azure-web-app-for-containers)
-            - [Azure Pipelines (CI)](#azure-pipelines-ci)
-            - [Azure Web App for Containers (Hosting)](#azure-web-app-for-containers-hosting)
-            - [Continous Deployment using Docker Hub](#continous-deployment-using-docker-hub)
-        - [Snyk](#snyk)
-            - [Snyk & Docker](#snyk--docker)
-            - [Snyk & Radix](#snyk--radix)
-            - [Snyk & Azure Pipeline](#snyk--azure-pipeline)
-    - [Consderations using Windows](#consderations-using-windows)
-        - [Shell](#shell)
-        - [Known isues](#known-isues)
+  - [Features](#features)
+  - [Install and run locally](#install-and-run-locally)
+    - [Test](#test)
+    - [Linting](#linting)
+    - [Using nodemon](#using-nodemon)
+  - [Docker](#docker)
+  - [Cloud Deployment](#cloud-deployment)
+    - [Radix](#radix)
+    - [Azure Pipelines & Azure Web App for Containers](#azure-pipelines--azure-web-app-for-containers)
+      - [Azure Pipelines (CI)](#azure-pipelines-ci)
+      - [Azure Web App for Containers (Hosting)](#azure-web-app-for-containers-hosting)
+      - [Continous Deployment using Docker Hub](#continous-deployment-using-docker-hub)
+    - [Snyk](#snyk)
+      - [Snyk & Docker](#snyk--docker)
+      - [Snyk & Radix](#snyk--radix)
+      - [Snyk & Azure Pipeline](#snyk--azure-pipeline)
+  - [Consderations using Windows](#consderations-using-windows)
+    - [Shell](#shell)
+    - [Known isues](#known-isues)
 
 <!-- /TOC -->
 
@@ -48,6 +48,7 @@ A web application to test various features in web applications, integration to D
 - Github action to scan for secrets in push and pull requests (using [gitleaks](https://github.com/zricethezav/gitleaks))
 - Github action to run unit tests on push
 - Using Pull Request Template
+- Adding rate limiting for the api
 
 ## Install and run locally
 
