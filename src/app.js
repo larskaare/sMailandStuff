@@ -23,7 +23,7 @@ var authUtil = require('../src/authutils');
 // - Max 10 requests to the /userinfo end-point for a specific IP over 15 minutes
 // - Max 3 requests to the /login end-point for a specific IP over 1 hour 
 
-const rateLimit = require("express-rate-limit");
+const rateLimit = require('express-rate-limit');
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
