@@ -29,7 +29,7 @@ exports.getLocalConfig = function() {
     var port = apputils.normalizePort(process.env.PORT || '3000');
 
     // Determing the url of the server. Using Radix env. varibles
-    var hostDomainName = (process.env.RADIX_PUBLIC_DOMAIN_NAME || process.env.WEBSITE_HOSTNAME || 'localhost');
+    var hostDomainName = (process.env.RADIX_PUBLIC_DOMAIN_NAME || process.env.WEBSITE_HOSTNAME || process.env.GITPOD_WORKSPACE_URL || 'localhost');
     var hostUrl = '';
     var hostUrlWithPort = '';
 
@@ -40,7 +40,8 @@ exports.getLocalConfig = function() {
     }
 
     hostUrlWithPort = hostUrl + ':' + port;
- 
+
+  
     // Reading vital config from environment variables
     //
        
@@ -58,6 +59,19 @@ exports.getLocalConfig = function() {
         localConfig.DESTROYSESSIONURL =  (process.env.DESTROYSESSIONURL || config.destroySessionUrl) + hostUrlWithPort;
     }
     
+    //A quick hack to adopt to gitpod 
+    if (process.env.GITPOD_WORKSPACE_URL) {
+        const gitpod_workspace_url = process.env.GITPOD_WORKSPACE_URL;
+
+        hostDomainName = gitpod_workspace_url.split('https://')[1];
+        hostUrl = gitpod_workspace_url;
+        hostUrlWithPort = 'https://' + port + '-' + hostDomainName;
+
+        localConfig.REDIRECTURL = hostUrlWithPort + (process.env.REDIRECTURL || config.creds.redirectUrl);     
+
+        log.info('Calculating redirect url for gitpod environment: ' + localConfig.REDIRECTURL);
+    }
+
     localConfig.hostDomainName = hostDomainName;
     localConfig.hostUrl = hostUrl;
     localConfig.hostUrlWithPort = hostUrlWithPort;
