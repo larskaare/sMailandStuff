@@ -59,8 +59,8 @@ exports.getLocalConfig = function() {
         localConfig.DESTROYSESSIONURL =  (process.env.DESTROYSESSIONURL || config.destroySessionUrl) + hostUrlWithPort;
     }
     
-   //A quick hack to adopt to gitpod 
-   if (process.env.GITPOD_WORKSPACE_URL) {
+    //A quick hack to adopt to gitpod 
+    if (process.env.GITPOD_WORKSPACE_URL) {
         const gitpod_workspace_url = process.env.GITPOD_WORKSPACE_URL;
 
         hostDomainName = gitpod_workspace_url.split('https://')[1];
