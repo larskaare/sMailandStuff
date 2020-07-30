@@ -49,6 +49,7 @@ A web application to test various features in web applications, integration to D
 - Github action to run unit tests on push
 - Using Pull Request Template
 - Adding rate limiting for the api
+- Adding experimental support for [gitpod](https://gitpod.io/#https://github.com/larskaare/sMailandStuff)
 
 ## Install and run locally
 
