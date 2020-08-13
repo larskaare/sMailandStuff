@@ -49,7 +49,7 @@
     "eslint": "^6.3.0",
     "kind-of": "^6.0.3",
     "mocha": "^7.0.1",
-    "nodemon": "^1.19.2",
+    "nodemon": "^2.0.4",
     "sinon": "^8.1.1",
     "supertest": "^4.0.2"
   }
