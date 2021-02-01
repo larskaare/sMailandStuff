@@ -16,7 +16,7 @@
   "dependencies": {
     "acorn": "^7.4.0",
     "body-parser": "^1.19.0",
-    "bunyan": "^1.8.13",
+    "bunyan": "^1.8.15",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "espree": "^6.2.1",
