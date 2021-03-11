@@ -22,7 +22,7 @@
         "espree": "^6.2.1",
         "express": "~4.17.1",
         "express-bunyan-logger": "^1.3.3",
-        "express-rate-limit": "^5.1.3",
+        "express-rate-limit": "^5.2.6",
         "express-session": "^1.17.0",
         "helmet": "^3.21.3",
         "http-errors": "~1.7.3",
