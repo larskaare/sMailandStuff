@@ -34,30 +34,30 @@ A web application to test various features in web applications, integration to D
 
 ## Features
 
-- oAuth2 and OICD against Azure AD
-- Reading email from o365 Graph
-- Expose various token related information for user/session
-- Exploring cookie behavior for displaying last time visited on a few pages
-- Docker multi-stage build
-- Support for ESLint
-- Security headers like CSP
-- Automated tests
-- Support for Omnia Radix (CI, CD, Hosting, Monitoring)
-- Support for Azure Pipelines, Azure Web App for Containers
-- Support for Vulnerability scanning using Snyk
-- Github action to scan for secrets in push and pull requests (using [gitleaks](https://github.com/zricethezav/gitleaks))
-- Github action to run unit tests on push
-- Using Pull Request Template
-- Adding rate limiting for the api
-- Adding experimental support for [gitpod](https://gitpod.io/#https://github.com/larskaare/sMailandStuff)
+-   oAuth2 and OICD against Azure AD
+-   Reading email from o365 Graph
+-   Expose various token related information for user/session
+-   Exploring cookie behavior for displaying last time visited on a few pages
+-   Docker multi-stage build
+-   Support for ESLint
+-   Security headers like CSP
+-   Automated tests
+-   Support for Omnia Radix (CI, CD, Hosting, Monitoring)
+-   Support for Azure Pipelines, Azure Web App for Containers
+-   Support for Vulnerability scanning using Snyk
+-   Github action to scan for secrets in push and pull requests (using [gitleaks](https://github.com/zricethezav/gitleaks))
+-   Github action to run unit tests on push
+-   Using Pull Request Template
+-   Adding rate limiting for the api
+-   Adding experimental support for [gitpod](https://gitpod.io/#https://github.com/larskaare/sMailandStuff)
 
 ## Install and run locally
 
-- Clone repository
-- Do `npm install`
-- Create `Application registration` in Azure AD
-- Update configuration in `./config/config.js`
-- Export the following config into the local environment variables
+-   Clone repository
+-   Do `npm install`
+-   Create `Application registration` in Azure AD
+-   Update configuration in `./config/config.js`
+-   Export the following config into the local environment variables
 
 ```bash
 export NODE_ENV=development
@@ -67,7 +67,7 @@ export TENANTID=""
 export CLIENTID=""
 ```
 
-- Run application using `npm start`
+-   Run application using `npm start`
 
 ### Test
 
@@ -85,8 +85,8 @@ To develop using nodemon run `npm run nodemon`
 
 ## Docker
 
-- Build: `docker build -t smailandstuff .`
-- Run:
+-   Build: `docker build -t smailandstuff .`
+-   Run:
 
 ```bash
 docker run -p 3000:3000  \
@@ -108,12 +108,12 @@ An example application may or may not be available at <https://webapp-smailandst
 
 [Test report from securityheaders.com](https://securityheaders.com/?q=https%3A%2F%2Fwebapp-smailandstuff-production.playground.radix.equinor.com&followRedirects=on)
 
-- Examine and update `./radixconfig.yaml`
-- (Apply for access to the Radix playground)
-- Create new application in the Radix Playground
-- Inject the CLIENTSECRET using the Radix Web Console
+-   Examine and update `./radixconfig.yaml`
+-   (Apply for access to the Radix playground)
+-   Create new application in the Radix Playground
+-   Inject the CLIENTSECRET using the Radix Web Console
 
-(Current version of code uses memory to as session store. This will not scale beyond one app instance and it will leak memory. This set-up is not recommended for ***real*** production scenarios)
+(Current version of code uses memory to as session store. This will not scale beyond one app instance and it will leak memory. This set-up is not recommended for **_real_** production scenarios)
 
 ### Azure Pipelines & Azure Web App for Containers
 
@@ -132,12 +132,13 @@ An example application may or may not be available at <https://azsmailandstuff.a
 To host the application create an Azure Web App For Containers, point it to the `larskaare/smailandstuff` image and the `latest`.
 
 Add the following environment variables to the `Configuration -> Application Settings` section:
-- CLIENTID
-- CLIENTSECRET
-- NODE_ENV
-- TENANT_ID
 
-#### Continous Deployment using Docker Hub 
+-   CLIENTID
+-   CLIENTSECRET
+-   NODE_ENV
+-   TENANTID
+
+#### Continous Deployment using Docker Hub
 
 Enable `Continuous Deployment` from the `Container Setting` section of the WebApp (previous section). Copy the webhook to Docker Hub `larskaare/smailandstuff` WebHooks section to enable Docker Hub to trigger a redeploy when new images are pushed into the registry.
 
@@ -163,9 +164,9 @@ For the SNYK integration to work with Radix you will have to extend the `radixco
 
 ```yaml
 sspec:
-  build:
-    secrets:
-      - SNYK_TOKEN
+    build:
+        secrets:
+            - SNYK_TOKEN
 ```
 
 The value for the SNYK_TOKEN are entered in the Radix portal (the configuration section of your app.)
@@ -190,14 +191,16 @@ Most things should work ok with the cmd or powershell - with a few limitations. 
 
 ### Known isues
 
-* Be aware of how to export environment variables, `set` for Windows, `export` for Bash/Linux
-* Define proxy variables if needed:
+-   Be aware of how to export environment variables, `set` for Windows, `export` for Bash/Linux
+-   Define proxy variables if needed:
+
 ```
   HTTP_PROXY=http://url:port
   HTTPS_PROXY=http://url:port
 ```
-* `npm` is a bit quicky when it comes to running scripts. Doing `npm start` may fail, but copying the command from `package.json`and running from the terminal works for most scenarios. Configuring NPM to use a different shell could be an option `npm config set shell-script` could be an option to explore.
-* Using [Docker Desktop for Windows](https://www.docker.com/get-started) should work fine. Remeber to define proxy settings if your beind one of these. Update the `~/.docker/config.json` with something like this (update `url`and `port` to reflect your context):
+
+-   `npm` is a bit quicky when it comes to running scripts. Doing `npm start` may fail, but copying the command from `package.json`and running from the terminal works for most scenarios. Configuring NPM to use a different shell could be an option `npm config set shell-script` could be an option to explore.
+-   Using [Docker Desktop for Windows](https://www.docker.com/get-started) should work fine. Remeber to define proxy settings if your beind one of these. Update the `~/.docker/config.json` with something like this (update `url`and `port` to reflect your context):
 
 ```
    {"proxies":
