@@ -37,9 +37,9 @@
         "qs": "^6.9.2",
         "randomstring": "^1.1.5",
         "request-promise": "^4.2.6",
-        "snyk": "^1.452.0",
+        "snyk": "^1.465.0",
         "then-request": "^6.0.2",
-        "underscore": "^1.11.0",
+        "underscore": "^1.12.1",
         "url": "^0.11.0"
     },
     "devDependencies": {
