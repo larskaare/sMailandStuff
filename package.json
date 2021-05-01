@@ -39,7 +39,7 @@
         "request-promise": "^4.2.6",
         "snyk": "^1.518.0",
         "then-request": "^6.0.2",
-        "underscore": "^1.12.1",
+        "underscore": "^1.13.0",
         "url": "^0.11.0"
     },
     "devDependencies": {
